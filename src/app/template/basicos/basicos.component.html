@@ -4,7 +4,7 @@
 <div class="row">
   <div class="col">
 
-    <form (ngSubmit)="guardar(miFormulario)"
+    <form (ngSubmit)="guardar()"
      #miFormulario="ngForm" autocomplete="off">
 
       <!--Campo de producto-->
@@ -14,8 +14,14 @@
           <input type="text" class="form-control"
           ngModel
           name="producto"
-           placeholder="Nombre del producto">
-          <span class="form-text text-danger">Debe ser de 3 letras</span>
+           placeholder="Nombre del producto"
+           required
+           minlength="3">
+
+          <span class="form-text text-danger"
+          *ngIf="nombreValido()">
+            Debe ser de 3 letras
+          </span>
         </div>
       </div>
 
@@ -28,6 +34,11 @@
           name="precio"
           placeholder="Precio del producto"
           required>
+
+          <span class="form-text text-danger"
+          *ngIf="precioValido()">
+            El precio debe ser mayor o igual a 0
+          </span>
         </div>
       </div>
 
@@ -44,7 +55,8 @@
 
       <div class="row">
         <div class="col">
-          <button type="submit" class="btn btn-primary float-end">
+          <button type="submit" [disabled]="miFormulario.invalid"
+          class="btn btn-primary float-end">
             Guardar
           </button>
         </div>
@@ -61,6 +73,14 @@
     <!--Mostramos si el formulario es valido-->
     <span>Valid</span>
     <pre>{{miFormulario.valid}}</pre>
+
+    <!--Significa que no se cambiaron los valores con los que se presento el formulario-->
+    <span>Pristine</span>
+    <pre>{{miFormulario.pristine}}</pre>
+
+    <!--Significa que entras en el campo y te sales auqnue no se haya cambiado nada pero lo toco-->
+    <span>Touched</span>
+    <pre>{{miFormulario.touched}}</pre>
 
     <!--Mostramos los valores del formulario-->
     <span>Value</span>
