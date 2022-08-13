@@ -12,4 +12,8 @@ export class BasicosComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // guardar(miFormulario:any){
+  //   console.log(miFormulario);
+  // }
+
 }
