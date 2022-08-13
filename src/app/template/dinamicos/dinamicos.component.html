@@ -10,7 +10,10 @@
       Nombre
     </label>
     <div class="col-sm-9">
-      <input class="form-control" placeholder="Nombre de la persona" ngModel name="nombre" required>
+      <input class="form-control" placeholder="Nombre de la persona"
+       [ngModel]="persona.nombre"
+        name="nombre"
+        required>
       <!--Mensaje para el error-->
       <span class="form-text text-danger" *ngIf="miFormulario.form.controls['nombre']?.errors &&
       miFormulario.form.controls['nombre'].touched">
@@ -42,11 +45,17 @@
     </label>
     <div class="col-sm-9">
 
-      <input class="form-control mb-1">
-      <input class="form-control mb-1">
-      <input class="form-control mb-1">
-      <input class="form-control mb-1">
-      <input class="form-control mb-1">
+      <div class="input-group mb-1" *ngFor="let juego of persona.favoritos; let i=index">
+        <input [(ngModel)]="juego.nombre"
+        name="favoritos {{ i }}"
+         class="form-control" required>
+
+         <button class="btn btn-outline-danger" type="button" (click)="eliminar(i)">
+          Eliminar
+        </button>
+
+      </div>
+
 
     </div>
   </div>
@@ -62,3 +71,6 @@
   </div>
 
 </form>
+
+<span>Persona</span>
+<pre>{{persona | json}}</pre>
