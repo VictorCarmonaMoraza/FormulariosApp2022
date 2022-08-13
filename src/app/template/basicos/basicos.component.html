@@ -49,6 +49,8 @@
           <input type="number" class="form-control"
           ngModel
           name="existencias"
+          customMin
+          [minimo]="0"
           placeholder="Existencias del producto">
         </div>
       </div>
@@ -85,6 +87,8 @@
     <!--Mostramos los valores del formulario-->
     <span>Value</span>
     <pre>{{miFormulario.value | json}}</pre>
+
+   
 
   </div>
 </div>
