@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
-// interface Persona{
-//   nombre:string;
-//   favoritos:Favorito[];
-// }
+interface Persona {
+  nombre: string;
+  favoritos: Favorito[];
+}
 
-// interface Favorito{
-//   id:number;
-//   nombre:string;
-// }
+interface Favorito {
+  id: number;
+  nombre: string;
+}
 
 
 @Component({
@@ -18,13 +18,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DinamicosComponent implements OnInit {
 
+  persona: Persona =
+    {
+      nombre: 'Fernando',
+      favoritos: [
+        { id: 1, nombre: 'Metal Gear' },
+        { id: 2, nombre: 'Fifa 2022' }
+      ]
+    }
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  guardar(){
+  guardar() {
     console.log('formulario posteado');
+  }
+
+   //Elimina un elemento del listado de favoritos por su id
+   eliminar(index:number){
+    //Borramos del arreglo
+    this.persona.favoritos.splice(index,1);
   }
 
 }
