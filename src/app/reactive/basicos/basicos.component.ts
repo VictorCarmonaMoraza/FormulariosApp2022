@@ -1,6 +1,5 @@
-import { FormControl } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder,FormGroup } from '@angular/forms';
+import { Component} from '@angular/core';
 
 @Component({
   selector: 'app-basicos',
@@ -9,11 +8,18 @@ import { FormGroup } from '@angular/forms';
 })
 export class BasicosComponent{
 
-  miFormulario:FormGroup=new FormGroup({
-    'nombre':new FormControl('RTX 4080ti')
-  })
+  // miFormulario:FormGroup=new FormGroup({
+  //   'nombre':new FormControl('RTX 4080ti'),
+  //   'precio':new FormControl(1500),
+  //   'existencias':new FormControl(0)
+  // })
+miFormulario:FormGroup=this.fb.group({
+  nombre:['RTX 40480ti'],
+  precio:[0],
+  existencias:[0]
+})
 
-  constructor() { }
+  constructor(private fb:FormBuilder) { }
 
 
 
