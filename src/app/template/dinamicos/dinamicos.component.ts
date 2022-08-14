@@ -18,6 +18,8 @@ interface Favorito {
 })
 export class DinamicosComponent implements OnInit {
 
+  nuevoJuego:string='';
+
   persona: Persona =
     {
       nombre: 'Fernando',
@@ -40,6 +42,17 @@ export class DinamicosComponent implements OnInit {
    eliminar(index:number){
     //Borramos del arreglo
     this.persona.favoritos.splice(index,1);
+  }
+
+  agregarJuego(){
+    const nuevoFavorito:Favorito={
+      id:this.persona.favoritos.length+1,
+      nombre:this.nuevoJuego
+    }
+    //Agregamos al arreglo
+    this.persona.favoritos.push({ ...nuevoFavorito});
+    //Limpiarmos los campos
+    this.nuevoJuego='';
   }
 
 }

@@ -28,10 +28,16 @@
     <div class="col-sm-9">
       <div class="input-group">
         <input
-        class="form-control" placeholder="Agregar juego favorito">
-        <button class="btn btn-outline-primary" type="button">
+        class="form-control" placeholder="Agregar juego favorito"
+        [(ngModel)]="nuevoJuego"
+        (keyup.enter)="agregarJuego()"
+        name="nuevoJuego"
+        >
+
+        <button class="btn btn-outline-primary" type="button" (click)="agregarJuego()">
           Agregar
         </button>
+
       </div>
     </div>
   </div>
@@ -66,3 +72,7 @@
   </div>
 
 </form>
+
+
+<span>Persona</span>
+<pre>{{persona | json}}</pre>
