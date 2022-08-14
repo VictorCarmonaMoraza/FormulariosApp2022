@@ -1,3 +1,4 @@
+import { Validators } from '@angular/forms';
 import { FormBuilder,FormGroup } from '@angular/forms';
 import { Component} from '@angular/core';
 
@@ -14,9 +15,9 @@ export class BasicosComponent{
   //   'existencias':new FormControl(0)
   // })
 miFormulario:FormGroup=this.fb.group({
-  nombre:['RTX 40480ti'],
-  precio:[0],
-  existencias:[0]
+  nombre:['RTX 40480ti',[Validators.required,Validators.minLength(3)]],
+  precio:[0,[Validators.min(0),Validators.required]],
+  existencias:[0,[Validators.min(0),Validators.required]],
 })
 
   constructor(private fb:FormBuilder) { }
